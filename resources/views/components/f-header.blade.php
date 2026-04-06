@@ -1,0 +1,406 @@
+@php
+    $identity = \App\Models\Master\Identity::first();
+@endphp
+
+<header class="rbt-header rbt-header-10">
+    <div class="rbt-sticky-placeholder"></div>
+
+    <div class="rbt-header-wrapper header-space-betwween header-sticky">
+        <div class="container-fluid">
+            <div class="mainbar-row rbt-navigation-center align-items-center">
+                <div class="header-left rbt-header-content">
+                    <div class="header-info">
+                        <div class="logo">
+                            <a href="{{ route('public.home') }}">
+                                <img src="{{ asset('storage/images/identity/' . $identity->logo) }}" alt="{{ $identity->name }}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-info">
+                    </div>
+                </div>
+
+                <div class="rbt-main-navigation d-none d-xl-block">
+                    <nav class="mainmenu-nav">
+                        <ul class="mainmenu">
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.home') }}">Beranda</a>
+                            </li>
+
+                            <li class="has-dropdown has-menu-child-item">
+                                <a href="#">Tentang Kami
+                                    <i class="feather-chevron-down"></i>
+                                </a>
+                                <ul class="submenu">
+                                    <li><a href="{{ route('public.vision-mission.index') }}">Visi Misi</a></li>
+                                    <li><a href="{{ route('public.task-function.index') }}">Tugas dan Fungsi</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.service.index') }}">Layanan</a>
+                            </li>
+
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.document.index') }}">Dokumen</a>
+                            </li>
+
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.news.index') }}">Informasi</a>
+                            </li>
+
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.contact.index') }}">Kontak</a>
+                            </li>
+                            <li class="with-megamenu position-static">
+                                <a href="{{ route('public.service.registration.check') }}">Cek Nomor</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <!-- Start Mobile-Menu-Bar -->
+                    <div class="mobile-menu-bar d-block d-xl-none">
+                        <div class="hamberger">
+                            <button class="hamberger-button rbt-round-btn">
+                                <i class="feather-menu"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Start Mobile-Menu-Bar -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Start Search Dropdown  -->
+        <div class="rbt-search-dropdown">
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form action="#">
+                            <input type="text" placeholder="What are you looking for?">
+                            <div class="submit-btn">
+                                <a class="rbt-btn btn-gradient btn-md" href="#">Search</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="rbt-separator-mid">
+                    <hr class="rbt-separator m-0">
+                </div>
+
+                <div class="row g-4 pt--30 pb--60">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h5 class="rbt-title-style-2">Our Top Course</h5>
+                        </div>
+                    </div>
+
+                    <!-- Start Single Card  -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="course-details.html">
+                                    <img src="{{ asset('frontend/images/course/course-online-01.jpg') }}" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <h5 class="rbt-card-title"><a href="course-details.html">React Js</a>
+                                </h5>
+                                <div class="rbt-review">
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-count"> (15 Reviews)</span>
+                                </div>
+                                <div class="rbt-card-bottom">
+                                    <div class="rbt-price">
+                                        <span class="current-price">$15</span>
+                                        <span class="off-price">$25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Card  -->
+
+                    <!-- Start Single Card  -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="course-details.html">
+                                    <img src="{{ asset('frontend/images/course/course-online-02.jpg') }}" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <h5 class="rbt-card-title"><a href="course-details.html">Java Program</a>
+                                </h5>
+                                <div class="rbt-review">
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-count"> (15 Reviews)</span>
+                                </div>
+                                <div class="rbt-card-bottom">
+                                    <div class="rbt-price">
+                                        <span class="current-price">$10</span>
+                                        <span class="off-price">$40</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Card  -->
+
+                    <!-- Start Single Card  -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="course-details.html">
+                                    <img src="{{ asset('frontend/images/course/course-online-03.jpg') }}" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <h5 class="rbt-card-title"><a href="course-details.html">Web Design</a>
+                                </h5>
+                                <div class="rbt-review">
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-count"> (15 Reviews)</span>
+                                </div>
+                                <div class="rbt-card-bottom">
+                                    <div class="rbt-price">
+                                        <span class="current-price">$10</span>
+                                        <span class="off-price">$20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Card  -->
+
+                    <!-- Start Single Card  -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                                <a href="course-details.html">
+                                    <img src="{{ asset('frontend/images/course/course-online-04.jpg') }}" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="rbt-card-body">
+                                <h5 class="rbt-card-title"><a href="course-details.html">Web Design</a>
+                                </h5>
+                                <div class="rbt-review">
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-count"> (15 Reviews)</span>
+                                </div>
+                                <div class="rbt-card-bottom">
+                                    <div class="rbt-price">
+                                        <span class="current-price">$20</span>
+                                        <span class="off-price">$40</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Card  -->
+                </div>
+
+            </div>
+        </div>
+        <!-- End Search Dropdown  -->
+    </div>
+    <!-- Start Side Vav -->
+    <div class="rbt-offcanvas-side-menu rbt-category-sidemenu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="inner-title">
+                    <h4 class="title">Course Category</h4>
+                </div>
+                <div class="rbt-btn-close">
+                    <button class="rbt-close-offcanvas rbt-round-btn"><i class="feather-x"></i></button>
+                </div>
+            </div>
+            <nav class="side-nav w-100">
+                <ul class="rbt-vertical-nav-list-wrapper vertical-nav-menu">
+                    <li class="vertical-nav-item">
+                        <a href="#">Course School</a>
+                        <div class="vartical-nav-content-menu-wrapper">
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Figma</a></li>
+                                    <li><a href="#">Adobe</a></li>
+                                </ul>
+                            </div>
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Photo</a></li>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Math</a></li>
+                                    <li><a href="#">Read</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="vertical-nav-item">
+                        <a href="#">Online School</a>
+                        <div class="vartical-nav-content-menu-wrapper">
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Photo</a></li>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Math</a></li>
+                                    <li><a href="#">Read</a></li>
+                                </ul>
+                            </div>
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Figma</a></li>
+                                    <li><a href="#">Adobe</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="vertical-nav-item">
+                        <a href="#">kindergarten</a>
+                        <div class="vartical-nav-content-menu-wrapper">
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Photo</a></li>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Math</a></li>
+                                    <li><a href="#">Read</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="vertical-nav-item">
+                        <a href="#">Classic LMS</a>
+                        <div class="vartical-nav-content-menu-wrapper">
+                            <div class="vartical-nav-content-menu">
+                                <h3 class="rbt-short-title">Course Title</h3>
+                                <ul class="rbt-vertical-nav-list-wrapper">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Figma</a></li>
+                                    <li><a href="#">Adobe</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="read-more-btn">
+                    <div class="rbt-btn-wrapper mt--20">
+                        <a class="rbt-btn btn-border-gradient radius-round btn-sm hover-transform-none w-100 justify-content-center text-center" href="#">
+                            <span>Learn More</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="rbt-offcanvas-footer">
+
+            </div>
+        </div>
+    </div>
+    <!-- End Side Vav -->
+    <a class="rbt-close_side_menu" href="javascript:void(0);"></a>
+</header>
+
+<!-- Mobile Menu Section -->
+<div class="popup-mobile-menu">
+    <div class="inner-wrapper">
+        <div class="inner-top">
+            <div class="content">
+                <div class="logo">
+                    <a href="{{ route('public.home') }}">
+                        <img src="{{ asset('storage/images/identity/' . $identity->logo) }}" alt="{{ $identity->name }}" alt="Education Logo Images">
+                    </a>
+                </div>
+                <div class="rbt-btn-close">
+                    <button class="close-button rbt-round-btn"><i class="feather-x"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mainmenu-nav">
+            <ul class="mainmenu">
+                <li class="with-megamenu position-static">
+                <a href="{{ route('public.home') }}">ss</a>
+                </li>
+
+
+                <li class="has-dropdown has-menu-child-item">
+                    <a href="#">Tentang Kami
+                        <i class="feather-chevron-down"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{ route('public.vision-mission.index') }}">Visi Misi</a></li>
+                        <li><a href="{{ route('public.task-function.index') }}">Tugas dan Fungsi</a></li>
+                    </ul>
+                </li>
+
+                 <li class="submenu">
+                                <a href="{{ route('public.service.index') }}">Layanan</a>
+                            </li>
+
+                <li class="with-megamenu position-static">
+                    <a href="{{ route('public.document.index') }}">Dokumen</a>
+                </li>
+
+                <li class="with-megamenu position-static">
+                    <a href="{{ route('public.news.index') }}">Informasi</a>
+                </li>
+
+                <li class="with-megamenu position-static">
+                    <a href="{{ route('public.contact.index') }}">Kontak</a>
+                </li>
+                 <li class="with-megamenu position-static">
+                    <a href="{{ route('public.contact.index') }}">Kontak</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.submenu-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const li = btn.closest('.has-dropdown');
+    li.classList.toggle('active');
+    const sm = li.querySelector('.submenu');
+    if (sm) sm.style.display = (sm.style.display === 'block') ? 'none' : 'block';
+  });
+});
+</script>
+<!-- End Side Vav -->
+<a class="close_side_menu" href="javascript:void(0);"></a>
