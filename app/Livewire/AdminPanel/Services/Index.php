@@ -9,10 +9,13 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Title('Pendaftar Layanan')]
 class Index extends Component
 {
+    use WithPagination;
+
     #[Url()]
     public string $search = '';
 

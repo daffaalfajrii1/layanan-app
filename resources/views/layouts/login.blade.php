@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Sistem Informasi Layanan" name="description" />
-        <meta content="UBD" name="author" />
+        <meta content="Diskominfo" name="author" />
 
         <title>{{ $title ?? config('app.name') }}</title>
 

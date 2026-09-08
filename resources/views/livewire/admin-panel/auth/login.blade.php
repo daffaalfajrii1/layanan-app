@@ -82,7 +82,7 @@
                         <p class="text-muted mb-0">&copy;
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> UBD. Crafted with <i class="mdi mdi-heart text-danger"></i> by Universitas Bina Darma
+                            </script> Diskominfo RL. Crafted with <i class="mdi mdi-heart text-danger"></i> by Universitas Bina Darma
                         </p>
                     </div>
                 </div>
