@@ -86,10 +86,10 @@ class Index extends Component
     // =========================
     public function save(): void
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            'documentFile' => 'required|file|max:5120', // 5 MB
-        ]);
+        $this->validate(
+            $this->documentValidationRules(required: true),
+            $this->documentValidationMessages()
+        );
 
         $storedFileName = $this->handleUploadedFile($this->documentFile, $this->name);
 
@@ -112,11 +112,10 @@ class Index extends Component
     // =========================
     public function update(): void
     {
-        $this->validate([
-            'name' => 'required|string|max:255',
-            // file opsional saat edit jika sudah ada file lama
-            'documentFile' => 'nullable|file|max:5120',
-        ]);
+        $this->validate(
+            $this->documentValidationRules(required: false),
+            $this->documentValidationMessages()
+        );
 
         $document = Document::findOrFail($this->id);
 
@@ -164,6 +163,32 @@ class Index extends Component
             params: $params,
             callback: ''
         );
+    }
+
+    /**
+     * Validasi sinkron dengan config/livewire.php temporary_file_upload (max 10MB).
+     * mimes di level komponen (bukan temp upload) agar DOCX tidak ditolak prematur.
+     */
+    protected function documentValidationRules(bool $required): array
+    {
+        $fileRule = ($required ? 'required' : 'nullable')
+            . '|file|max:10240|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg,gif,webp';
+
+        return [
+            'name' => 'required|string|max:255',
+            'documentFile' => $fileRule,
+        ];
+    }
+
+    protected function documentValidationMessages(): array
+    {
+        return [
+            'documentFile.required' => 'File dokumen wajib diunggah.',
+            'documentFile.file' => 'File dokumen tidak valid atau gagal diunggah. Cek ukuran (maks. 10MB) dan izin folder storage.',
+            'documentFile.max' => 'Ukuran file maksimal 10MB.',
+            'documentFile.mimes' => 'Format diizinkan: PDF, DOC, DOCX, XLS, XLSX, PNG, JPG, JPEG, GIF, WEBP.',
+            'documentFile.uploaded' => 'Gagal mengunggah file. Pastikan ukuran ≤ 10MB, PHP upload_max_filesize/post_max_size cukup, dan storage/app/livewire-tmp writable.',
+        ];
     }
 
     // =========================

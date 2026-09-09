@@ -64,10 +64,13 @@ return [
     */
 
     'temporary_file_upload' => [
-        'disk' => null,        // Example: 'local', 's3'              | Default: 'default'
-        'rules' => null,       // Example: ['file', 'mimes:png,jpg']  | Default: ['required', 'file', 'max:12288'] (12MB)
-        'directory' => null,   // Example: 'tmp'                      | Default: 'livewire-tmp'
-        'middleware' => null,  // Example: 'throttle:5,1'             | Default: 'throttle:60,1'
+        'disk' => 'local',
+        // Jangan pakai mimes ketat di sini: DOCX sering terdeteksi sebagai zip/octet-stream
+        // dan membuat Livewire gagal dengan "failed to upload" sebelum validasi komponen jalan.
+        // Batasi tipe di validasi komponen (Documents, form publik, dll).
+        'rules' => ['required', 'file', 'max:10240'], // 10 MB (KB)
+        'directory' => 'livewire-tmp',
+        'middleware' => null,  // Default: 'throttle:60,1'
         'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs...
             'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
             'mov', 'avi', 'wmv', 'mp3', 'm4a',

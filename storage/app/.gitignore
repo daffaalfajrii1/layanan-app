@@ -1,3 +1,5 @@
 *
 !public/
+!livewire-tmp/
+!livewire-tmp/.gitignore
 !.gitignore

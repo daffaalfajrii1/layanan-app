@@ -38,7 +38,8 @@ class RegistrationService
         $rule = $document->is_required ? 'required' : 'nullable';
 
         return match ($document->type) {
-            'file' => "{$rule}|file|max:10240",
+            // max selaras dengan config/livewire.php temporary_file_upload (10MB)
+            'file' => "{$rule}|file|max:10240|mimes:pdf,doc,docx,xls,xlsx,png,jpg,jpeg,gif,webp",
             'email' => "{$rule}|email|max:255",
             'date' => "{$rule}|date",
             'time' => "{$rule}|date_format:H:i",

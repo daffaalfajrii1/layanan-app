@@ -181,8 +181,13 @@
                                 wire:model="documentFile"
                                 class="form-control"
                                 id="documentFile"
+                                accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.webp,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/*"
                             >
                         </div>
+
+                        <small class="form-text text-muted d-block mt-1">
+                            Format: PDF, DOC, DOCX, XLS, XLSX, atau gambar. Maksimal 10MB.
+                        </small>
 
                         <div wire:loading wire:target="documentFile" class="form-text text-muted mt-1">
                             Mengunggah file...

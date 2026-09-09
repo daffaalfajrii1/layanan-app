@@ -53,7 +53,9 @@
                                             <input id="document_{{ $loop->index }}" type="file"
                                                 wire:model="documents.{{ $loop->index }}"
                                                 class="form-control"
+                                                accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.webp,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/*"
                                                 @if($document->is_required) required @endif>
+                                            <small class="text-muted">PDF, DOC, DOCX, XLS, XLSX, atau gambar. Maks. 10MB.</small>
                                             @break
                                         @case('date')
                                             <input id="document_{{ $loop->index }}" type="date"
