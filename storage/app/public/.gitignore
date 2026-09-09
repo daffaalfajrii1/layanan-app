@@ -1,2 +1,7 @@
 *
+!livewire-tmp/
+!livewire-tmp/.gitignore
+!files/
+!files/documents/
+!files/documents/.gitignore
 !.gitignore

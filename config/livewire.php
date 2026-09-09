@@ -64,19 +64,18 @@ return [
     */
 
     'temporary_file_upload' => [
-        'disk' => 'local',
-        // Jangan pakai mimes ketat di sini: DOCX sering terdeteksi sebagai zip/octet-stream
-        // dan membuat Livewire gagal dengan "failed to upload" sebelum validasi komponen jalan.
-        // Batasi tipe di validasi komponen (Documents, form publik, dll).
+        // Pakai disk public: di banyak hosting folder ini sudah writable (sama dengan file dokumen).
+        'disk' => 'public',
+        // Jangan pakai mimes ketat di sini: DOCX sering terdeteksi sebagai zip/octet-stream.
         'rules' => ['required', 'file', 'max:10240'], // 10 MB (KB)
         'directory' => 'livewire-tmp',
-        'middleware' => null,  // Default: 'throttle:60,1'
-        'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs...
+        'middleware' => null,
+        'preview_mimes' => [
             'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
             'mov', 'avi', 'wmv', 'mp3', 'm4a',
             'jpg', 'jpeg', 'mpga', 'webp', 'wma',
         ],
-        'max_upload_time' => 5, // Max duration (in minutes) before an upload is invalidated...
+        'max_upload_time' => 5,
     ],
 
     /*

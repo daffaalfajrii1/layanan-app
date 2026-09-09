@@ -67,8 +67,10 @@ Route::prefix('admin-panel')->group(function () {
         Route::get('/service-master', \App\Livewire\AdminPanel\ServiceMaster\Index::class)->name('admin.service-master.index');
         Route::get('/service-master/{service}/fields', \App\Livewire\AdminPanel\ServiceMaster\Manage::class)->name('admin.service-master.manage');
 
-        // Documents
+        // Documents (list Livewire; simpan via form klasik agar tidak bergantung livewire-tmp)
         Route::get('/documents', \App\Livewire\AdminPanel\Documents\Index::class)->name('admin.documents.index');
+        Route::post('/documents', [\App\Http\Controllers\AdminPanel\DocumentController::class, 'store'])->name('admin.documents.store');
+        Route::put('/documents/{document}', [\App\Http\Controllers\AdminPanel\DocumentController::class, 'update'])->name('admin.documents.update');
 
         // Identity
         Route::get('/identity', \App\Livewire\AdminPanel\Identity\Index::class)->name('admin.identity.index');
