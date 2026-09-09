@@ -139,9 +139,10 @@
         {{-- =====================================================
              MODAL TAMBAH / EDIT
              NOTE:
-             - kita pakai 1 modal yg sama
-             - form submit -> wire:submit.prevent="submit"
-             - input file pakai wire:model.live supaya ke-bind
+             - 1 modal untuk add/edit
+             - Jangan pakai wire:model.live pada name saat ada file upload:
+               re-render mid-upload membuat TemporaryUploadedFile hilang
+             - Tombol Simpan di-disable selama upload sementara berjalan
           ===================================================== --}}
         <x-modal
             name="showModal"
@@ -151,14 +152,13 @@
                 wire:submit.prevent="submit"
                 class="tablelist-form"
                 autocomplete="off"
-                enctype="multipart/form-data"
             >
                 <div class="modal-body">
                     {{-- Dokumen --}}
                     <div class="mb-3">
                         <x-input-label for="name" value="Dokumen" required />
                         <x-text-input
-                            wire:model.live="name"
+                            wire:model="name"
                             type="text"
                             id="name"
                             placeholder="Nama Dokumen"
@@ -169,14 +169,30 @@
 
                     {{-- File --}}
                     <div class="mb-3">
-                        <x-input-label for="file" value="File" required />
+                        <x-input-label
+                            for="documentFile"
+                            value="File"
+                            :required="$mode === 'add' || blank($recentFile)"
+                        />
 
-                        <input
-                            type="file"
-                            wire:model.live="file"
-                            class="form-control"
-                            id="file"
-                        >
+                        <div wire:key="document-file-input-{{ $fileInputKey }}">
+                            <input
+                                type="file"
+                                wire:model="documentFile"
+                                class="form-control"
+                                id="documentFile"
+                            >
+                        </div>
+
+                        <div wire:loading wire:target="documentFile" class="form-text text-muted mt-1">
+                            Mengunggah file...
+                        </div>
+
+                        @if ($documentFile)
+                            <small class="text-success d-block mt-1">
+                                File siap diunggah: {{ $documentFile->getClientOriginalName() }}
+                            </small>
+                        @endif
 
                         {{-- Info file lama saat edit --}}
                         @if ($mode === 'edit' && $recentFile)
@@ -193,7 +209,7 @@
                             </small>
                         @endif
 
-                        <x-input-error :messages="$errors->get('file')"/>
+                        <x-input-error :messages="$errors->get('documentFile')"/>
                     </div>
                 </div>
 
@@ -206,8 +222,13 @@
                             Close
                         </x-secondary-button>
 
-                        <x-primary-button type="submit">
-                            Simpan
+                        <x-primary-button
+                            type="submit"
+                            wire:loading.attr="disabled"
+                            wire:target="documentFile,submit"
+                        >
+                            <span wire:loading.remove wire:target="documentFile">Simpan</span>
+                            <span wire:loading wire:target="documentFile">Mengunggah...</span>
                         </x-primary-button>
                     </div>
                 </div>

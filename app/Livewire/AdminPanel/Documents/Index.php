@@ -25,8 +25,9 @@ class Index extends Component
     public ?int $id = null;
 
     public string $name = '';
-    public $file = null;        // Livewire temporary uploaded file
+    public $documentFile = null; // Livewire temporary uploaded file
     public ?string $recentFile = null; // file lama saat edit
+    public int $fileInputKey = 0; // remount input file saat buka modal
 
     #[Url()]
     public string $search = '';
@@ -41,7 +42,8 @@ class Index extends Component
         $this->showModal = true;
 
         // reset form
-        $this->reset(['id', 'name', 'file', 'recentFile']);
+        $this->reset(['id', 'name', 'documentFile', 'recentFile']);
+        $this->fileInputKey++;
         $this->resetValidation();
     }
 
@@ -55,7 +57,8 @@ class Index extends Component
         $this->id         = $document->id;
         $this->name       = $document->name;
         $this->recentFile = $document->file;
-        $this->file       = null;
+        $this->documentFile = null;
+        $this->fileInputKey++;
 
         $this->resetValidation();
     }
@@ -85,12 +88,10 @@ class Index extends Component
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'file' => 'required|file|max:5120', // 5 MB
-            // contoh batasi extension:
-            // 'file' => 'required|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:5120',
+            'documentFile' => 'required|file|max:5120', // 5 MB
         ]);
 
-        $storedFileName = $this->handleUploadedFile($this->file, $this->name);
+        $storedFileName = $this->handleUploadedFile($this->documentFile, $this->name);
 
         Document::create([
             'name' => $this->name,
@@ -101,7 +102,7 @@ class Index extends Component
 
         // tutup modal & reset form
         $this->dispatch('closeModal');
-        $this->reset(['id', 'name', 'file', 'recentFile']);
+        $this->reset(['id', 'name', 'documentFile', 'recentFile']);
         $this->resetValidation();
         $this->showModal = false;
     }
@@ -113,16 +114,16 @@ class Index extends Component
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'file' => 'nullable|file|max:5120',
-            // 'file' => 'nullable|mimes:pdf,doc,docx,ppt,pptx,xls,xlsx|max:5120',
+            // file opsional saat edit jika sudah ada file lama
+            'documentFile' => 'nullable|file|max:5120',
         ]);
 
         $document = Document::findOrFail($this->id);
 
         $newFileName = $document->file;
 
-        if ($this->file) {
-            $newFileName = $this->handleUploadedFile($this->file, $this->name);
+        if ($this->documentFile) {
+            $newFileName = $this->handleUploadedFile($this->documentFile, $this->name);
         }
 
         $document->update([
@@ -133,7 +134,7 @@ class Index extends Component
         $this->showToastr('success', 'Data berhasil diubah');
 
         $this->dispatch('closeModal');
-        $this->reset(['id', 'name', 'file', 'recentFile']);
+        $this->reset(['id', 'name', 'documentFile', 'recentFile']);
         $this->resetValidation();
         $this->showModal = false;
     }
