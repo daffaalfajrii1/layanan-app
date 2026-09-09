@@ -2,6 +2,7 @@
 
 namespace App\Models\Service;
 
+use App\Models\Registration\RegistrationDocument;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +19,10 @@ class ServiceDocument extends Model
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function registrationDocuments()
+    {
+        return $this->hasMany(RegistrationDocument::class, 'service_document_id');
     }
 }

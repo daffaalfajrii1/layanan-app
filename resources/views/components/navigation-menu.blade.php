@@ -45,6 +45,8 @@
 
                 <x-nav-link :href="route('admin.documents.index')" :active="Request::routeIs('admin.documents.index')" icon="ri-file-copy-2-line">Dokumen</x-nav-link>
 
+                <x-nav-link :href="route('admin.service-master.index')" :active="Request::routeIs('admin.service-master.*')" icon="ri-service-line">Kelola Layanan</x-nav-link>
+
                 <x-nav-link :href="route('admin.services.index')" :active="Request::routeIs('admin.services.index')" icon="ri-file-list-3-line">Pendaftar Layanan</x-nav-link>
 
                 <x-nav-link :href="route('admin.identity.index')" :active="Request::routeIs('admin.identity.index')" icon="ri-settings-4-line">Identitas Website</x-nav-link>

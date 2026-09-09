@@ -102,6 +102,7 @@ class ServiceSeeder extends Seeder
             ['name' => 'No. Kontak', 'type' => 'text', 'is_required' => true],
             ['name' => 'Nama Sub Domain', 'type' => 'text', 'is_required' => true],
             ['name' => 'Informasi Website/Aplikasi', 'type' => 'text', 'is_required' => true],
+            ['name' => 'Upload Surat Permohonan', 'type' => 'file', 'is_required' => true],
         ];
 
         $documentLayanan5 = [

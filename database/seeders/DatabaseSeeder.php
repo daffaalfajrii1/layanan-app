@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             IdentitySeeder::class,
             ServiceSeeder::class,
+            HostingSuratPermohonanSeeder::class,
         ]);
     }
 }

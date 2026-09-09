@@ -60,8 +60,12 @@ Route::prefix('admin-panel')->group(function () {
         // Categories
         Route::get('/categories', \App\Livewire\AdminPanel\Categories\Index::class)->name('admin.categories.index');
 
-        // Services
+        // Services (pendaftar)
         Route::get('/services', \App\Livewire\AdminPanel\Services\Index::class)->name('admin.services.index');
+
+        // Master layanan + field dinamis
+        Route::get('/service-master', \App\Livewire\AdminPanel\ServiceMaster\Index::class)->name('admin.service-master.index');
+        Route::get('/service-master/{service}/fields', \App\Livewire\AdminPanel\ServiceMaster\Manage::class)->name('admin.service-master.manage');
 
         // Documents
         Route::get('/documents', \App\Livewire\AdminPanel\Documents\Index::class)->name('admin.documents.index');
